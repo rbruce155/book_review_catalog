@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <h1>Add a new product</h1>
+    <form action="/products/create" method="post">
+      <p>Name: <input type="text" name="name" value=""></p>
+      <p>Description: <input type="text" name="description" value=""></p>
+      <p>Price: <input type="text" name="price" value=""></p>
+      <p><input type="submit" value="Create"></p>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <p><a href="/products">Go back</a></p>
+  </body>
+</html>
